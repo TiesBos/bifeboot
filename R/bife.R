@@ -281,7 +281,7 @@ bife_fit <- function(beta, alpha, y, X, id, Ti, family, control) {
     MX <- center_variables(X * w_tilde, w_tilde, Ti)
     
     # Compute update steps
-    beta_upd <- qr.solve(MX, nu * w_tilde, epsilon)
+    beta_upd <- rep(0, length(beta))
     alpha_upd <- as.vector(update_alpha(as.vector(nu - X %*% beta_upd) * w_tilde, w_tilde, Ti))
     
     # Step-halving based on residual deviance as common in glm's
